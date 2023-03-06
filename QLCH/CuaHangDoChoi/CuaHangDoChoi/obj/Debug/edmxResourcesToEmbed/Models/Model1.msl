@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLCHModelStoreContainer" CdmEntityContainer="QLCHEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="QLCHModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="QLCHModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hoKH" ColumnName="hoKH" />
+          <ScalarProperty Name="tenKH" ColumnName="tenKH" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="SĐT" ColumnName="SĐT" />
+          <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="QLCHModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hoNV" ColumnName="hoNV" />
+          <ScalarProperty Name="tenNV" ColumnName="tenNV" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="SĐT" ColumnName="SĐT" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="QLCHModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenSP" ColumnName="tenSP" />
+          <ScalarProperty Name="giaBan" ColumnName="giaBan" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="moTa" ColumnName="moTa" />
+          <ScalarProperty Name="hinhAnh" ColumnName="hinhAnh" />
+          <ScalarProperty Name="id_LoaiSP" ColumnName="id_LoaiSP" />
+          <ScalarProperty Name="id_NCC" ColumnName="id_NCC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receipts">
+      <EntityTypeMapping TypeName="QLCHModel.Receipt">
+        <MappingFragment StoreEntitySet="Receipt">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ngayMua" ColumnName="ngayMua" />
+          <ScalarProperty Name="ngayBan" ColumnName="ngayBan" />
+          <ScalarProperty Name="id_KH" ColumnName="id_KH" />
+          <ScalarProperty Name="id_NV" ColumnName="id_NV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptDetails">
+      <EntityTypeMapping TypeName="QLCHModel.ReceiptDetail">
+        <MappingFragment StoreEntitySet="ReceiptDetail">
+          <ScalarProperty Name="id_HD" ColumnName="id_HD" />
+          <ScalarProperty Name="id_SP" ColumnName="id_SP" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="tongTien" ColumnName="tongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supliers">
+      <EntityTypeMapping TypeName="QLCHModel.Suplier">
+        <MappingFragment StoreEntitySet="Suplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenNCC" ColumnName="tenNCC" />
+          <ScalarProperty Name="thuongHieu" ColumnName="thuongHieu" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="SĐT" ColumnName="SĐT" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

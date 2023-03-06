@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLCHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tenLoai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="hoKH" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenKH" Type="nchar" MaxLength="10" />
+    <Property Name="ngaySinh" Type="datetime" />
+    <Property Name="gioiTinh" Type="nchar" MaxLength="10" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SĐT" Type="nchar" MaxLength="10" />
+    <Property Name="taiKhoan" Type="nchar" MaxLength="10" />
+    <Property Name="matKhau" Type="nchar" MaxLength="10" />
+    <Property Name="avatar" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="hoNV" Type="nchar" MaxLength="10" />
+    <Property Name="tenNV" Type="nchar" MaxLength="10" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="SĐT" Type="nchar" MaxLength="10" />
+    <Property Name="gioiTinh" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tenSP" Type="nvarchar" MaxLength="50" />
+    <Property Name="giaBan" Type="int" />
+    <Property Name="soLuong" Type="int" />
+    <Property Name="moTa" Type="nvarchar" MaxLength="50" />
+    <Property Name="hinhAnh" Type="nvarchar(max)" />
+    <Property Name="id_LoaiSP" Type="int" />
+    <Property Name="id_NCC" Type="int" />
+    <Property Name="tinhTrang" Type="bit" />
+  </EntityType>
+  <EntityType Name="Receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="ngayMua" Type="datetime" />
+    <Property Name="ngayBan" Type="datetime" />
+    <Property Name="id_KH" Type="int" />
+    <Property Name="id_NV" Type="int" />
+  </EntityType>
+  <EntityType Name="ReceiptDetail">
+    <Key>
+      <PropertyRef Name="id_HD" />
+      <PropertyRef Name="id_SP" />
+    </Key>
+    <Property Name="id_HD" Type="int" Nullable="false" />
+    <Property Name="id_SP" Type="int" Nullable="false" />
+    <Property Name="soLuong" Type="int" />
+    <Property Name="tongTien" Type="int" />
+  </EntityType>
+  <EntityType Name="Suplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tenNCC" Type="nchar" MaxLength="10" />
+    <Property Name="thuongHieu" Type="nchar" MaxLength="10" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SĐT" Type="nchar" MaxLength="10" />
+    <Property Name="email" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_Products_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="id_LoaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Suplier">
+    <End Role="Suplier" Type="Self.Suplier" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="id_NCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="id_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="id_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptDetail_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ReceiptDetail">
+        <PropertyRef Name="id_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptDetail_Receipt">
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="1" />
+    <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receipt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ReceiptDetail">
+        <PropertyRef Name="id_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLCHModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReceiptDetail" EntityType="Self.ReceiptDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suplier" EntityType="Self.Suplier" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Suplier" Association="Self.FK_Products_Suplier">
+      <End Role="Suplier" EntitySet="Suplier" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Customers" Association="Self.FK_Receipt_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Receipt" EntitySet="Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Employee" Association="Self.FK_Receipt_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Receipt" EntitySet="Receipt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptDetail_Products" Association="Self.FK_ReceiptDetail_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptDetail_Receipt" Association="Self.FK_ReceiptDetail_Receipt">
+      <End Role="Receipt" EntitySet="Receipt" />
+      <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
