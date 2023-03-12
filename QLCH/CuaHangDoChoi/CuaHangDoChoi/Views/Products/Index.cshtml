@@ -7,6 +7,7 @@
     List<Category> cat = db.Categories.ToList();
 }
 
+
 <div>
     <p class="atr" style="font-weight: 700; color: #444; font-size: 25px; font-family: 'Montserrat',sans-serif; "><span>DANH MỤC SẢN PHẨM NỔI BẬT</span></p>
 </div>
@@ -22,7 +23,7 @@
     }
 </div>-->
 
-<div class="row" style="padding-bottom:250px; column-gap: 150px;row-gap: 30px; display: flex; flex-wrap: nowrap">
+<div class="row" style="padding-bottom:250px; column-gap: 150px;row-gap: 30px; display: flex; flex-wrap: nowrap" id="datasearch">
     @foreach (var item in Model)
     {
         <div class="col-md-3 col-sm-12">
@@ -35,11 +36,11 @@
                     <h5 class="card-text">@string.Format("{0:#,0}", item.giaBan) VNĐ</h5>
                     @if (item.tinhTrang == true)
                     {
-                        <p class="card-text badge bg-success">Còn hàng</p>
+                        <p class="card-text badge bg-success">Tình trạng: Còn hàng</p>
                     }
                     else
                     {
-                        <p class="card-text badge bg-danger">Hết hàng</p>
+                        <p class="card-text badge bg-danger">Tình trạng: Hết hàng</p>
                     }
                     <div style="margin-top: 5px;">
                         <a href="~/Products/Details?id=@item.id" class="btn btn-primary">Chi tiết</a>
@@ -54,4 +55,27 @@
     }
 </div>
 
+<!--<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#search").click(function () {
+            var searchBy = $("#searchBy").val();
+            var searchValue = $("#search").val();
+            var searchData = $("dataSearch");
+            SetData.html("");
 
+            $.ajax({
+                type: "post";
+                url: "Products/GetSearchData?SearchBy=" + searchBy + "&SearchValue=" + searchValue,
+                contentType: "html",
+                success: function (result) {
+                    if (result.length == 0) {
+                        SetData.append('<div>Không tìm thấy</div>');
+                    } else {
+                        $.each(result, function)
+                    }
+                }
+            })
+        })
+    })
+</script>-->

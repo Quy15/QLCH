@@ -11,16 +11,14 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="hoKH" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="tenKH" Type="nchar" MaxLength="10" />
-    <Property Name="ngaySinh" Type="datetime" />
-    <Property Name="gioiTinh" Type="nchar" MaxLength="10" />
-    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
-    <Property Name="SĐT" Type="nchar" MaxLength="10" />
-    <Property Name="taiKhoan" Type="nchar" MaxLength="10" />
-    <Property Name="matKhau" Type="nchar" MaxLength="10" />
-    <Property Name="avatar" Type="nvarchar(max)" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hoKH" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="tenKH" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="taiKhoan" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="matKhau" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="sđt" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>

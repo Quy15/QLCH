@@ -12,16 +12,14 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="hoKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="tenKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="ngaySinh" Type="DateTime" Precision="3" />
-    <Property Name="gioiTinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="diaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SĐT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="taiKhoan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="matKhau" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tenKH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="taiKhoan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="matKhau" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="diaChi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sđt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Customers" FromRole="Customers" ToRole="Receipt" />
   </EntityType>
   <EntityType Name="Employee">
@@ -48,10 +46,10 @@
     <Property Name="hinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="id_LoaiSP" Type="Int32" />
     <Property Name="id_NCC" Type="Int32" />
+    <Property Name="tinhTrang" Type="Boolean" />
     <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
     <NavigationProperty Name="Suplier" Relationship="Self.FK_Products_Suplier" FromRole="Products" ToRole="Suplier" />
     <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Products" FromRole="Products" ToRole="ReceiptDetail" />
-    <Property Name="tinhTrang" Type="Boolean" />
   </EntityType>
   <EntityType Name="Receipt">
     <Key>

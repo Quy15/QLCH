@@ -11,7 +11,8 @@ namespace CuaHangDoChoi.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,15 +22,39 @@ namespace CuaHangDoChoi.Models
         }
     
         public int id { get; set; }
+        [Display(Name ="Họ")]
+        [Required(ErrorMessage = "Vui lòng nhập họ")]
         public string hoKH { get; set; }
+
+        [Display(Name = "Họ")]
+        [Required(ErrorMessage = "Vui lòng nhập tên")]
         public string tenKH { get; set; }
-        public Nullable<System.DateTime> ngaySinh { get; set; }
-        public string gioiTinh { get; set; }
-        public string diaChi { get; set; }
-        public string SĐT { get; set; }
+
+        [Display(Name = "Tài khoản")]
+        [Required(ErrorMessage = "Vui lòng nhập tài khoản")]
         public string taiKhoan { get; set; }
+
+        [Display(Name = "Mật khẩu")]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
+        [MinLength(6)]
         public string matKhau { get; set; }
-        public string avatar { get; set; }
+
+        [Display(Name = "Xác nhận mật khẩu")]
+        [Required(ErrorMessage = "Vui lòng xác nhận")]
+        [Compare("matKhau", ErrorMessage = "Mật khẩu không trùng")]
+        public string xacNhan { get; set; }
+
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Vui lòng nhập email")]
+        public string email { get; set; }
+
+        [Display(Name = "Địa chỉ")]
+        [Required(ErrorMessage = "Vui lòng nhập địa chỉ")]
+        public string diaChi { get; set; }
+
+        [Display(Name = "Số điện thoại")]
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
+        public string sđt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receipt> Receipts { get; set; }

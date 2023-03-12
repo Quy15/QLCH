@@ -15,13 +15,11 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="hoKH" ColumnName="hoKH" />
           <ScalarProperty Name="tenKH" ColumnName="tenKH" />
-          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
-          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
-          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
-          <ScalarProperty Name="SĐT" ColumnName="SĐT" />
           <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
           <ScalarProperty Name="matKhau" ColumnName="matKhau" />
-          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="sđt" ColumnName="sđt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,7 +38,6 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="QLCHModel.Product">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tenSP" ColumnName="tenSP" />
           <ScalarProperty Name="giaBan" ColumnName="giaBan" />
@@ -49,6 +46,7 @@
           <ScalarProperty Name="hinhAnh" ColumnName="hinhAnh" />
           <ScalarProperty Name="id_LoaiSP" ColumnName="id_LoaiSP" />
           <ScalarProperty Name="id_NCC" ColumnName="id_NCC" />
+          <ScalarProperty Name="tinhTrang" ColumnName="tinhTrang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

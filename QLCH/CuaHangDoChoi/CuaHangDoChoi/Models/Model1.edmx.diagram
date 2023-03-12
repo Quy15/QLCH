@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ae228d02aaa430a84893a8de403cffc" Name="Diagram1">
-        <EntityTypeShape EntityType="QLCHModel.Category" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+      <Diagram DiagramId="812a9fc2d15646c98d8ba0a6effb5e89" Name="Diagram1">
+        <EntityTypeShape EntityType="QLCHModel.Category" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHModel.Employee" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHModel.Product" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHModel.Receipt" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHModel.ReceiptDetail" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHModel.Suplier" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHModel.Employee" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHModel.Product" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHModel.Receipt" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHModel.ReceiptDetail" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHModel.Suplier" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="QLCHModel.FK_Products_Category" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHModel.FK_Receipt_Customers" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHModel.FK_Receipt_Employee" ManuallyRouted="false" />
