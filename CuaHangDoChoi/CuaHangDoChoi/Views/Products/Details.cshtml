@@ -1,0 +1,32 @@
+﻿@using CuaHangDoChoi.Models
+@model CuaHangDoChoi.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Base.cshtml";
+    QLCHEntities db = new QLCHEntities();
+    Suplier brand = db.Supliers.Find(Model.Suplier.id);
+}
+
+@if (Model == null)
+{
+    <h1 class="alert alert-warning">Không có sản phẩm này</h1>
+}
+else
+{
+   <h1 class="text-center text-success">CHI TIẾT SẢN PHẨM</h1>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <img src="@Model.hinhAnh" class="img-fluid" alt="@Model.tenSP" />
+        </div>
+        <div class="col-md-8 col-sm-6">
+            <h1>@Model.tenSP</h1>
+            <p>Mô tả sản phẩm: @Model.moTa</p>
+            <h3>Giá bán: @string.Format("{0:#,0}", Model.giaBan) VNĐ</h3>
+            @if (brand != null)
+            {
+               <span class="badge bg-success">Thương hiệu: @Model.Suplier.thuongHieu</span>
+            }
+        </div>
+    </div>
+}
+

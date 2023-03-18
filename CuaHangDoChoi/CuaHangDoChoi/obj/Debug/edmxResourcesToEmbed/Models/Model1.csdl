@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLCHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tenKH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="taiKhoan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="matKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="diaChi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sđt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Customers" FromRole="Customers" ToRole="Receipt" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="hoNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tenNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SĐT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Employee" FromRole="Employee" ToRole="Receipt" />
+    <NavigationProperty Name="Admins" Relationship="QLCHModel.FK__Admin__id_nv__534D60F1" FromRole="Employee" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="giaBan" Type="Int32" />
+    <Property Name="soLuong" Type="Int32" />
+    <Property Name="moTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_LoaiSP" Type="Int32" />
+    <Property Name="id_NCC" Type="Int32" />
+    <Property Name="tinhTrang" Type="Boolean" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
+    <NavigationProperty Name="Suplier" Relationship="Self.FK_Products_Suplier" FromRole="Products" ToRole="Suplier" />
+    <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Products" FromRole="Products" ToRole="ReceiptDetail" />
+  </EntityType>
+  <EntityType Name="Receipt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="ngayMua" Type="DateTime" Precision="3" />
+    <Property Name="ngayBan" Type="DateTime" Precision="3" />
+    <Property Name="id_KH" Type="Int32" />
+    <Property Name="id_NV" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Receipt_Customers" FromRole="Receipt" ToRole="Customers" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Receipt_Employee" FromRole="Receipt" ToRole="Employee" />
+    <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetail_Receipt" FromRole="Receipt" ToRole="ReceiptDetail" />
+  </EntityType>
+  <EntityType Name="ReceiptDetail">
+    <Key>
+      <PropertyRef Name="id_HD" />
+      <PropertyRef Name="id_SP" />
+    </Key>
+    <Property Name="id_HD" Type="Int32" Nullable="false" />
+    <Property Name="id_SP" Type="Int32" Nullable="false" />
+    <Property Name="soLuong" Type="Int32" />
+    <Property Name="tongTien" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ReceiptDetail_Products" FromRole="ReceiptDetail" ToRole="Products" />
+    <NavigationProperty Name="Receipt" Relationship="Self.FK_ReceiptDetail_Receipt" FromRole="ReceiptDetail" ToRole="Receipt" />
+  </EntityType>
+  <EntityType Name="Suplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="tenNCC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="thuongHieu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="diaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SĐT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Suplier" FromRole="Suplier" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK_Products_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="id_LoaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Customers">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="id_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="id_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Suplier">
+    <End Role="Suplier" Type="Self.Suplier" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="id_NCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptDetail_Products">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ReceiptDetail">
+        <PropertyRef Name="id_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptDetail_Receipt">
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="1" />
+    <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receipt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ReceiptDetail">
+        <PropertyRef Name="id_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLCHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+    <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetail" />
+    <EntitySet Name="Supliers" EntityType="Self.Suplier" />
+    <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Customers" Association="Self.FK_Receipt_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Employee" Association="Self.FK_Receipt_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Suplier" Association="Self.FK_Products_Suplier">
+      <End Role="Suplier" EntitySet="Supliers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptDetail_Products" Association="Self.FK_ReceiptDetail_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptDetail_Receipt" Association="Self.FK_ReceiptDetail_Receipt">
+      <End Role="Receipt" EntitySet="Receipts" />
+      <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+    </AssociationSet>
+    <EntitySet Name="Admins" EntityType="QLCHModel.Admin" />
+    <AssociationSet Name="FK__Admin__id_nv__534D60F1" Association="QLCHModel.FK__Admin__id_nv__534D60F1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taiKhoan" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="matKhau" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="id_nv" Type="Int32" />
+    <NavigationProperty Name="Employee" Relationship="QLCHModel.FK__Admin__id_nv__534D60F1" FromRole="Admin" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__Admin__id_nv__534D60F1">
+    <End Type="QLCHModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="QLCHModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="id_nv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

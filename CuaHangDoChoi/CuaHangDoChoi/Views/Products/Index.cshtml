@@ -1,0 +1,66 @@
+﻿
+@using CuaHangDoChoi.Models
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Base.cshtml";
+    QLCHEntities db = new QLCHEntities();
+    List<Category> cat = db.Categories.ToList();
+}
+
+@if (Session["idSP"] == null)
+{
+    <div>
+        <h2>@ViewBag.Message</h2>
+    </div>
+}
+
+<div>
+    <p class="atr" style="font-weight: 700; color: #444; font-size: 25px; font-family: 'Montserrat',sans-serif; "><span>SẢN PHẨM NỔI BẬT</span></p>
+</div>
+
+<!--<div class="product-card" style="display: flex; flex-wrap:nowrap; flex-direction:row;justify-content: space-evenly">
+    @foreach (var cate in Model)
+    {
+    <div class="cate_item">
+        <div><img class="img-fluid" style="width:100%" src="@cate.hinhAnh"></div>
+        <div class="cate_detail">
+            <h5>@cate.Category.tenLoai</h5>
+        </div>
+    </div>
+    }
+</div>-->
+
+<div class="row" style="padding-bottom:250px; column-gap: 100px;row-gap: 30px; display: flex; flex-wrap: wrap;" id="datasearch">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-12">
+            <div class="card">
+                <div style="width: 100%">
+                    <img class="card-img-top img-fluid" src="@item.hinhAnh" alt="@item.tenSP">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">@item.tenSP</h4>
+                    <h5 class="card-text">@string.Format("{0:#,0}", item.giaBan) VNĐ</h5>
+                    @if (item.tinhTrang == true)
+                    {
+                        <p class="card-text badge bg-success">Tình trạng: Còn hàng</p>
+                    }
+                    else
+                    {
+                        <p class="card-text badge bg-danger">Tình trạng: Hết hàng</p>
+                    }
+                    <div style="margin-top: 5px;">
+                        <a href="~/Products/Details?id=@item.id" class="btn btn-primary">Chi tiết</a>
+
+                        <a href="javascript:;" class="btn btn-danger ">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

@@ -1,0 +1,49 @@
+﻿@using CuaHangDoChoi.Models
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@if (Session["admin"] != null)
+{
+    <h2 style="text-align: center">Trang quản trị hệ thống</h2>
+    <p style="font-size: 20px; text-align: center">Xin chào @Session["admin"]</p>
+
+    <div class="container">
+
+        <h2>Danh sách sản phẩm</h2>
+        <table class="table" style="border: 1px 1px solid; border-collapse: collapse " id="tableOne">
+            <tr>
+                <td>Id</td>
+                <td>Loại sản phẩm</td>
+                <td>Tên sản phẩm</td>
+                <td>Giá bán</td>
+                <td>Số lượng</td>
+                <td>Hãng sản xuất</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.Category.tenLoai</td>
+                    <td>@item.tenSP</td>
+                    <td>@item.giaBan</td>
+                    <td>@item.soLuong</td>
+                    <td>@item.Suplier.tenNCC</td>
+                    <td>
+                        <a href="" class='btn btn-success'>Edit</a>
+                        <a href="" class='btn btn-danger'>Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <h2 style="text-align: center">Trang quản trị hệ thống</h2>
+    <h1 style="text-align: center">Vui lòng đăng nhập để thực hiện chức năng quản trị</h1>
+    <img src="~/Content/image/logo.jpg" style="width: 100%" class="rounded mx-auto d" />
+
+}
+

@@ -1,0 +1,63 @@
+﻿@using CuaHangDoChoi.Models
+@model List<CuaHangDoChoi.Models.Product>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SmartToys</title>
+    <link href="~/Content/image/logo.jpg" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="javascript:void(0)">Quản trị hệ thống</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        @if (Session["idAdmin"] != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link " href="~/Admin/ProductsManager">Quản lý sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Quản lý nhà cung cấp</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ml-auto menu" style="position: absolute; right: 50px">
+                        @if (Session["idAdmin"] != null)
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="nav-link text-success dropdown-toggle"><i class="fa-solid fa-user"></i> @Session["admin"]</a>
+                                <ul class="dropdown-menu">  
+                                    <li><a href="~/Admin/LogoutAdmin">Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+    </body>
+</html>

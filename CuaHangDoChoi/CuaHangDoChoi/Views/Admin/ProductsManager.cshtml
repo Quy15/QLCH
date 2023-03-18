@@ -1,0 +1,123 @@
+﻿@using CuaHangDoChoi.Models
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    QLCHEntities db = new QLCHEntities();
+    var brand = db.Supliers.ToList();
+    var cate = db.Categories.ToList();
+}
+
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Thêm sản phẩm</p>
+
+
+                                <form class="mx-1 mx-md-4" method="post" action="~/Admin/ProductsManager">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example1c" class="form-control" name="tenSP" />
+                                            <label class="form-label" for="form3Example1c">Tên sản phẩm</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example1c" class="form-control" name="giaBan" />
+                                            <label class="form-label" for="form3Example1c">Giá bán</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example3c" class="form-control" name="soLuong" />
+                                            <label class="form-label" for="form3Example3c">Số lượng</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example3c" class="form-control" name="moTa" />
+                                            <label class="form-label" for="form3Example3c">Mô tả</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="file" accept="image/png" class="form-control" id="avatar" name="hinhAnh">
+                                            <label for="avatar">Hình ảnh</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <select name="id_NCC">
+                                                @foreach (var item in cate) {
+                                                    <option value="@item.id">
+                                                        @item.tenLoai
+                                                    </option>
+                                                }
+                                            </select>
+                                            <label class="form-label" for="form3Example3c">Loại sản phẩm</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <select name="id_NCC">
+                                                @foreach (var item in brand)
+                                                {
+                                                    <option value="@item.id">
+                                                        @item.tenNCC
+                                                    </option>
+                                                }
+                                            </select>
+                                            <label class="form-label" for="form3Example3c">Nhà cung cấp</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" id="form3Example3c" class="form-control" name="tinhTrang " />
+                                            <label class="form-label" for="form3Example3c">Tình trạng</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="btn btn-primary btn-success" style="width: 100%">Thêm</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="~/Content/image/logo.jpg"
+                                     class="img-fluid" alt="Sample image">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

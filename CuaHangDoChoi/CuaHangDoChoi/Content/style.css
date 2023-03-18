@@ -1,0 +1,116 @@
+﻿p.atr > span {
+    margin-top: 70px;
+    display: block;
+    background-color: lightblue;
+    width: 30%;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+}
+
+p.atr > span::after {
+    content: "";
+    border-width: 35px;
+    border-style: solid;
+    border-color: transparent transparent lightblue lightblue;
+    position: absolute;
+    left: 100%;
+    bottom: 0px;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f093fb;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+    background-color: black;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+}
+
+.dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+
+.table-responsive-stack tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+
+.table-responsive-stack td,
+.table-responsive-stack th {
+    display: block;
+    /*      
+   flex-grow | flex-shrink | flex-basis   */
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.table-responsive-stack .table-responsive-stack-thead {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .table-responsive-stack tr {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        border-bottom: 3px solid #ccc;
+        display: block;
+    }
+    /*  IE9 FIX   */
+    .table-responsive-stack td {
+        float: left\9;
+        width: 100%;
+    }
+}
+
+
+
+
